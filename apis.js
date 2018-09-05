@@ -25,8 +25,13 @@ var server = http.createServer(function (req, res) {
     console.log(json);
     var jsonData = JSON.stringify(json);
     if (req.url = "/chsarp") {
-        if (req.method == "GET")
+        if (req.method == "GET") {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Request-Method', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET');
+            res.setHeader('Access-Control-Allow-Headers', '*');
             res.write(jsonData);
+        }
         if (req.method == "POST") {
             req.on('data', function (data) {
                 var resp = JSON.parse(data);
