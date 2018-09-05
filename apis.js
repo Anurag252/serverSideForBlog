@@ -55,4 +55,4 @@ var server = http.createServer(function (req, res) {
 server.on('clientError', function (err, socket) {
     socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
-server.listen(8000);
+server.listen(process.env.PORT || 8000);
